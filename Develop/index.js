@@ -9,7 +9,7 @@ const questions = () => {
     return inquirer.prompt([
       {
         type: 'input',
-        name: 'Title',
+        name: 'title',
         message: 'What is the project title? (Required)',
         validate: titleInput => {
           if (titleInput) {
@@ -135,9 +135,9 @@ return inquirer
 };
 
 // TODO: Create a function to write README file
-function writeToFile(generateMarkdown, ReadMeData) {
+function writeToFile(QuestionsData) {
 
-    const pageMD = writeToFile(ReadMeData);
+    const pageMD = generateMarkdown(QuestionsData);
     fs.writeFile('./readMe.md', pageMD, err => {
       if (err) throw new Error(err);
       console.log('Page created! Check out readMe.md in this directory to see it!');
@@ -152,9 +152,9 @@ function writeToFile(generateMarkdown, ReadMeData) {
 
 // TODO: Create a function to initialize app
 function init() {
-questions().then(promptQuestions)
-
-
+questions()
+.then(promptQuestions)
+.then(writeToFile)
 
 
 }
