@@ -2,10 +2,11 @@
 
 const fs = require('fs');
 const inquirer = require('inquirer');
+
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-const questions = () => {
+const promptquestions = () => {
     return inquirer.prompt([
       {
         type: 'input',
@@ -71,12 +72,7 @@ const questions = () => {
         message: 'Please name collaborators, third party assets or tutorials to credit ',
         when: ({ confirmCredits }) => confirmCredits
       },
-      {
-        type: 'checkbox',
-        name: 'license',
-        message: 'What license is associated with this project? (Check all that apply)',
-        choices: ['Apache licence 2.0', 'GNU GPLv3 ', ' ISC', 'MIT', 'Mozilla Public License 2.0', 'Boost Software License 1.0', 'The Unlicense']
-      },
+    
       {
         type: 'input',
         name: 'tests',
@@ -89,56 +85,89 @@ const questions = () => {
             return false;
           }}
       },
+      {
+        type: 'input',
+        name: 'link',
+        message: 'What is your github link? (Required)',
+        validate: githubInput => {
+          if (githubInput) {
+            return true;
+          } else {
+            console.log('You need to enter a github link!');
+            return false;
+          }
+        }
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email? (Required)',
+        validate: githubInput => {
+          if (githubInput) {
+            return true;
+          } else {
+            console.log('You need to enter your email');
+            return false;
+          }
+        }
+      },
 
 
- ])
+
+
+ ]);
 
 };
 
 const promptQuestions = QuestionsData => {
-if (!QuestionsData.questions){
-  QuestionsData.questions = [];
+if (!QuestionsData.projects){
+  QuestionsData.projects= [];
 }
 return inquirer
 .prompt([
   {
-    type: 'input',
-    name: 'link',
-    message: 'What is your github link? (Required)',
-    validate: githubInput => {
-      if (githubInput) {
-        return true;
-      } else {
-        console.log('You need to enter a github link!');
-        return false;
-      }
-    }
+    type: 'checkbox',
+    name: 'license',
+    message: 'What license is associated with this project? (Check all that apply)',
+    choices: ['Apache licence 2.0', 'GNU GPLv3 ', ' ISC', 'MIT', 'Mozilla Public License 2.0', 'Boost Software License 1.0', 'The Unlicense']
+  
   },
+
+
   {
     type: 'input',
-    name: 'email',
-    message: 'What is your email? (Required)',
-    validate: githubInput => {
-      if (githubInput) {
-        return true;
-      } else {
-        console.log('You need to enter your email');
-        return false;
-      }
-    }
+    name: 'licenseLink',
+    message: 'Enter the license link for your chosen license.',
+ 
   },
 
 
+  {
+        type: 'confirm',
+        name: 'confirmAddlicense',
+        message: 'Would you like to enter another license?',
+        default: false
+      }
 
 
-]);
+
+
+])
+.then(licenseData => {
+  QuestionsData.projects.push(licenseData);
+  if (licenseData.confirmAddLicense) {
+    return promptQuestions(QuestionsData);
+  } else {
+    return QuestionsData;
+  }
+});
 };
 
 // TODO: Create a function to write README file
-function writeToFile(QuestionsData) {
+writeToFile = licenseData => {
 
-    const pageMD = generateMarkdown(QuestionsData);
-    fs.writeFile('./readMe.md', pageMD, err => {
+    const pageMD = generateMarkdown(licenseData);
+    fs.writeFile('./ReadMe.md', pageMD, err => {
       if (err) throw new Error(err);
       console.log('Page created! Check out readMe.md in this directory to see it!');
     });
@@ -152,12 +181,11 @@ function writeToFile(QuestionsData) {
 
 // TODO: Create a function to initialize app
 function init() {
-questions()
+promptquestions()
 .then(promptQuestions)
 .then(writeToFile)
 
-
-}
+};
 
 
 

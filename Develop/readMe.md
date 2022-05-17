@@ -1,7 +1,7 @@
-# undefined
+# Read Me Maker 5000
 
 ## Description
-undefined
+an application to generate professional readme documents for projects. save time and effort for developmemt!
 
 ## Table of Contents
 - [Installation](#installation)
@@ -10,20 +10,21 @@ undefined
 - [License](#license)
 
 ## Installation
-undefined
+clone the repo named Read-Me-Maker-5000 from mpeterson56 github. repo link available below
 
 ## Usage
-undefined
+clone the repo named Read-Me-Maker-5000 from mpeterson56 github. repo link available below
 
 ## Credits
-undefined
+w3 schools, bootcamp spot, and the professional readme template provided in slack.
 
-## License
-undefined
+
+
+
 
 ## Tests
-undefined
+TBD
 
 ## Questions
-asdf
-asdf
+[https://github.com/mpeterson56/ReadMe-Maker-5000](https://github.com/https://github.com/mpeterson56/ReadMe-Maker-5000)
+mikemikemike3390@yahoo.com
