@@ -1,7 +1,7 @@
-# Read Me Maker 5000
+# read me generator 5000
 
 ## Description
-an application to generate professional readme documents for projects. save time and effort for developmemt!
+makes a read me easy stylz
 
 ## Table of Contents
 - [Installation](#installation)
@@ -10,14 +10,13 @@ an application to generate professional readme documents for projects. save time
 - [License](#license)
 
 ## Installation
-clone the repo named Read-Me-Maker-5000 from mpeterson56 github. repo link available below
+clone the rep linked below!
 
 ## Usage
-clone the repo named Read-Me-Maker-5000 from mpeterson56 github. repo link available below
+simpley type <node index> into the terminal after navigating to appropriate file path
 
 ## Credits
-w3 schools, bootcamp spot, and the professional readme template provided in slack.
-
+w3schools, bootcamp spot and the friends on slack...thanks fam
 
 
 
@@ -26,5 +25,5 @@ w3 schools, bootcamp spot, and the professional readme template provided in slac
 TBD
 
 ## Questions
-[https://github.com/mpeterson56/ReadMe-Maker-5000](https://github.com/https://github.com/mpeterson56/ReadMe-Maker-5000)
+[github link](https://github.com/mpeterson56/ReadMe-Maker-5000)
 mikemikemike3390@yahoo.com
